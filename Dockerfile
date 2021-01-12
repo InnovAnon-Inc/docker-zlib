@@ -1,10 +1,11 @@
 FROM innovanon/doom-base as zlib
 ARG LFS=/mnt/lfs
 USER lfs
-# TODO
-RUN ls -ltra /usr/local/bin
-RUN sleep 31 \
+RUN tor --verify-config                 \
  && command -v strip.sh                 \
+ && touch test                          \
+ && rm -v test                           \
+ && sleep 91 \
  && git clone --depth=1 --recursive       \
       https://github.com/madler/zlib.git    \
  && cd                        zlib        \
