@@ -13,6 +13,8 @@ RUN sleep 31 \
  && strip.sh .                            \
  && tar acf        ../zlib.txz .          \
  && rm -rf       $LFS/sources/zlib
+      # TODO
+#"${CONFIG_OPTS[@]}"                 \
 
 FROM scratch as final
 COPY --from=zlib /tmp/zlib.txz /tmp/
