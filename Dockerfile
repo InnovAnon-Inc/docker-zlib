@@ -9,6 +9,7 @@ RUN sleep 31 \
  && make                                  \
  && make DESTDIR=/tmp/zlib install        \
  && cd           /tmp/zlib                \
+ && strip.sh .                            \
  && tar acf        ../zlib.txz .          \
  && rm -rf       $LFS/sources/zlib
 
