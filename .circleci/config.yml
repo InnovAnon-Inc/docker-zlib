@@ -69,4 +69,14 @@ jobs:
               #echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME
               docker push innovanon/zlib
             fi
+      - run:
+          name: Push upstream (docker-bzip2)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl --location --request POST \
+                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/docker-bzip2/pipeline' \
+                --header 'Content-Type: application/json' \
+                -u "${BZIP2_API_TOKEN}:"
+            fi
+
 
