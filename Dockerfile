@@ -1,6 +1,8 @@
 FROM innovanon/doom-base as zlib
 ARG LFS=/mnt/lfs
 USER lfs
+# TODO
+RUN ls -ltra /usr/local/bin
 RUN sleep 31 \
  && command -v strip.sh                 \
  && git clone --depth=1 --recursive       \
