@@ -1,11 +1,7 @@
 FROM innovanon/doom-base as zlib
 ARG LFS=/mnt/lfs
 USER lfs
-RUN tor --verify-config                 \
- && command -v strip.sh                 \
- && touch test                          \
- && rm -v test                           \
- && sleep 91 \
+RUN sleep 91 \
  && git clone --depth=1 --recursive       \
       https://github.com/madler/zlib.git    \
  && cd                        zlib        \
@@ -14,7 +10,7 @@ RUN tor --verify-config                 \
  && make DESTDIR=/tmp/zlib install        \
  && cd           /tmp/zlib                \
  && strip.sh .                            \
- && tar acf        ../zlib.txz .          \
+ && tar  pacf        ../zlib.txz .          \
  && rm -rf       $LFS/sources/zlib
       # TODO
 #"${CONFIG_OPTS[@]}"                 \
